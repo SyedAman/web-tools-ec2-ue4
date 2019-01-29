@@ -61,7 +61,9 @@ class App extends Component {
       deleteTaskMutation,
       deleteTaskMutationParameters
     );
-    const { data: { deleteTask: deletedTask } } = await API.graphql(deleteTaskOperation);
+    const {
+      data: { deleteTask: deletedTask }
+    } = await API.graphql(deleteTaskOperation);
 
     this.setState({
       tasks: this.state.tasks.filter(task => task.id !== deletedTask.id)
@@ -81,7 +83,13 @@ class App extends Component {
             <Route
               path="(/|/tasks)"
               exact
-              render={props => <Tasks {...props} tasks={this.state.tasks} onDeleteTask={this.deleteTask} />}
+              render={props => (
+                <Tasks
+                  {...props}
+                  tasks={this.state.tasks}
+                  onDeleteTask={this.deleteTask}
+                />
+              )}
             />
             <Route path="/tasks/new-task" exact component={NewTask} />
             <Route

@@ -12,9 +12,9 @@ const styles = {
 const RunningTask = ({ task }) =>
   task && (
     <div>
-      {task.type === "Train" && (
+      {task && (
         <div style={styles.root}>
-          <p>Status: Currently Training ML Model...</p>
+          <p>{`Status: Currently ${task.type}ing ML Model...`}</p>
           <CircularProgress />
         </div>
       )}
