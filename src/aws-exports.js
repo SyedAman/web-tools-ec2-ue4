@@ -4,7 +4,7 @@ const awsmobile =  {
     "aws_project_region": "us-east-1",
     "aws_content_delivery_bucket": "ai-ue4-webtools",
     "aws_content_delivery_bucket_region": "us-east-1",
-    "aws_content_delivery_url": "http://ai-ue4-webtools.s3-website-us-east-1.amazonaws.com",
+    "aws_content_delivery_url": "https://d1tupt9k5wjbpg.cloudfront.net",
     "aws_cognito_identity_pool_id": "us-east-1:2370c760-cbcc-4134-a9ab-70cf0bfbe1b7",
     "aws_cognito_region": "us-east-1",
     "aws_user_pools_id": "us-east-1_VzM3uiVbc",
