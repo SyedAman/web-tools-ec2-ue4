@@ -43,6 +43,9 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.fileInput = React.createRef();
+    this.state = {
+      error: false
+    }
   }
 
   goBackToTasksPage() {
@@ -78,7 +81,7 @@ class Upload extends Component {
       datasetPreset: this.toCapitalCase(params.preset),
       datasetWorld: this.toCapitalCase(params.world),
       mlModel: null,
-      trainingAlgorithm: 'training-algorithm.txt',
+      trainingAlgorithm: this.fileInput.current.files[0].name,
       startedOn: Date.now(),
       endedOn: null
     };
@@ -93,6 +96,10 @@ class Upload extends Component {
   }
 
   startTask = async () => {
+    if (!this.fileInput.current || !this.fileInput.current.files[0]) {
+      this.setState({ error: true });
+      return;
+    }
     const newTask = await this.createNewTask();
     this.provideTaskInformation(newTask);
     this.goBackToTasksPage();
@@ -110,7 +117,8 @@ class Upload extends Component {
           Back
         </Button>
         <Paper style={styles.paper}>
-          <Subheader>Upload Training Algorithm</Subheader>
+          <Subheader>Upload Training Algorithm & Launch</Subheader>
+          <p hidden={!this.state.error}>You must upload a file.</p>
           <br />
           <input type="file" ref={this.fileInput} />
           <br />
