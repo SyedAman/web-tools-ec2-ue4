@@ -8,8 +8,8 @@ import { withAuthenticator } from "aws-amplify-react";
 import Tasks from "./containers/Tasks";
 import TaskDetails from "./components/TaskDetails";
 import NewTask from "./containers/NewTask";
-import AIType from "./containers/AIType";
-import ChooseDataset from "./containers/ChooseDataset";
+import ChoosePreset from "./containers/ChoosePreset";
+import ChooseWorldDataset from "./containers/ChooseWorldDataset";
 import Upload from "./containers/Upload";
 
 Amplify.configure(awsExports);
@@ -105,12 +105,12 @@ class App extends Component {
             <Route
               path="/tasks/new-task/:aiType/type"
               exact
-              component={AIType}
+              component={ChoosePreset}
             />
             <Route
               path="/tasks/new-task/:aiType/:preset/choose-dataset"
               exact
-              component={ChooseDataset}
+              component={ChooseWorldDataset}
             />
             <Route
               path="/tasks/new-task/:aiType/:preset/:world/upload"

@@ -5,9 +5,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
-import LocalAirportIcon from "@material-ui/icons/LocalAirport";
-import WarningIcon from "@material-ui/icons/Warning";
+import PublicIcon from "@material-ui/icons/Public";
 
 const styles = {
   root: {
@@ -19,7 +17,7 @@ const styles = {
   }
 };
 
-class ChooseDataset extends Component {
+class ChooseWorldDataset extends Component {
   redirectToUpload(world) {
     this.props.history.push(`${world}/upload`);
   }
@@ -42,25 +40,25 @@ class ChooseDataset extends Component {
           </Subheader>
           <ListItem button onClick={() => this.redirectToUpload("tokyo")}>
             <ListItemIcon>
-              <DirectionsCarIcon />
+              <PublicIcon />
             </ListItemIcon>
             <ListItemText primary="Tokyo" />
           </ListItem>
           <ListItem button onClick={() => this.redirectToUpload("nyc")}>
             <ListItemIcon>
-              <LocalAirportIcon />
+              <PublicIcon />
             </ListItemIcon>
             <ListItemText primary="NYC" />
           </ListItem>
           <ListItem button onClick={() => this.redirectToUpload("countryside")}>
             <ListItemIcon>
-              <LocalAirportIcon />
+              <PublicIcon />
             </ListItemIcon>
             <ListItemText primary="Country Side" />
           </ListItem>
           <ListItem button onClick={() => this.redirectToUpload("mexico")}>
             <ListItemIcon>
-              <WarningIcon />
+              <PublicIcon />
             </ListItemIcon>
             <ListItemText primary="Mexico" />
           </ListItem>
@@ -70,4 +68,4 @@ class ChooseDataset extends Component {
   }
 }
 
-export default ChooseDataset;
+export default ChooseWorldDataset;

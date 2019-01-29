@@ -19,7 +19,7 @@ const styles = {
   }
 };
 
-class AIType extends Component {
+class ChoosePreset extends Component {
   redirectToChooseDataset(preset) {
     this.props.history.push(`${preset}/choose-dataset`);
   }
@@ -72,4 +72,4 @@ class AIType extends Component {
   }
 }
 
-export default AIType;
+export default ChoosePreset;
