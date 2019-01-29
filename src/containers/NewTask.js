@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const styles = {
   root: {
@@ -15,15 +15,23 @@ class NewTask extends Component {
     return (
       <div style={styles.root}>
         <h1>New Task</h1>
-        <Button onClick={() => {this.props.history.push('../')}}>
+        <Button
+          onClick={() => {
+            this.props.history.push("../");
+          }}
+        >
           Back
         </Button>
         <br />
-        <Link to={`${this.props.match.path}/train-ai/type`}>Train Neural Net</Link>
+        <Link to={`${this.props.match.path}/train-ai/type`}>
+          Train Neural Net
+        </Link>
         <br />
-        <Link to={`${this.props.match.path}/test-ai/type`}>Test Neural Net</Link>
+        <Link to={`${this.props.match.path}/test-ai/type`}>
+          Test Neural Net
+        </Link>
       </div>
-    )
+    );
   }
 }
 

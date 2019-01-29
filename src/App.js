@@ -22,7 +22,7 @@ const listTasksQuery = `query listTasksQuery {
       type
     }
   }
-}`
+}`;
 
 class App extends Component {
   state = {
@@ -31,22 +31,23 @@ class App extends Component {
 
   createNewTask = newTask => {
     this.setState({
-      tasks: [
-        ...this.state.tasks,
-        newTask
-      ]
+      tasks: [...this.state.tasks, newTask]
     });
   };
 
   async getTasks() {
     const listQueryOperation = graphqlOperation(listTasksQuery);
-    const { data: { listTasks: { items: tasks } }} = await API.graphql(listQueryOperation);
+    const {
+      data: {
+        listTasks: { items: tasks }
+      }
+    } = await API.graphql(listQueryOperation);
     return tasks;
   }
 
   async componentWillMount() {
     const tasks = await this.getTasks();
-    this.setState({ tasks })
+    this.setState({ tasks });
   }
 
   render() {

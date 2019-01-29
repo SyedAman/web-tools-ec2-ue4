@@ -83,7 +83,10 @@ class Tasks extends Component {
     return (
       <div style={styles.root}>
         <h1>All Tasks</h1>
-        <Subheader>Click task for more info. Train and test AI in virtual simulated worlds.</Subheader>
+        <Subheader>
+          Click task for more info. Train and test AI in virtual simulated
+          worlds.
+        </Subheader>
         <GridList cellHeight={80} style={styles.gridList}>
           {this.props.tasks &&
             this.props.tasks.map(task => (

@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
-import uuidv1 from 'uuid/v1';
+import uuidv1 from "uuid/v1";
 import Button from "@material-ui/core/Button";
 import Subheader from "material-ui/Subheader";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
-import LocalAirportIcon from "@material-ui/icons/LocalAirport";
-import WarningIcon from "@material-ui/icons/Warning";
-import Paper from '@material-ui/core/Paper';
+import Paper from "@material-ui/core/Paper";
 
 const createNewTaskMutation = `mutation createNewTask($id: ID!, $datasetWorld: String, $type: TaskType!, $status: TaskStatus!, $datasetPreset: String, $mlModel: String, $trainingAlgorithm: String, $startedOn: String, $endedOn: String) {
   createTask(input: {
@@ -29,7 +21,7 @@ const createNewTaskMutation = `mutation createNewTask($id: ID!, $datasetWorld: S
     status
     type
   }
-}`
+}`;
 
 const styles = {
   root: {
@@ -43,7 +35,7 @@ const styles = {
     padding: "20px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "center"
   }
 };
 
@@ -54,17 +46,17 @@ class Upload extends Component {
   }
 
   goBackToTasksPage() {
-    this.props.history.push('/tasks');
+    this.props.history.push("/tasks");
   }
 
   provideTaskInformation(newTask) {
-    const file = this.fileInput.current.files[0]
-    if (newTask.type === 'Train') {
+    const file = this.fileInput.current.files[0];
+    if (newTask.type === "Train") {
       this.props.onCreateNewTask({
         ...newTask,
         trainingAlgorithm: file
       });
-    } else if (newTask.type === 'Test') {
+    } else if (newTask.type === "Test") {
       this.props.onCreateNewTask({
         ...newTask,
         mlModel: file
@@ -75,17 +67,22 @@ class Upload extends Component {
   async createNewTask() {
     const createNewTaskMutationParameters = {
       id: uuidv1(),
-      type: Math.random() > .5 ? 'Train' : 'Test',
-      status: Math.random() > .5 ? 'Running' : 'Finished',
-      datasetPreset: 'Driving',
-      datasetWorld: 'Tokyo',
+      type: Math.random() > 0.5 ? "Train" : "Test",
+      status: Math.random() > 0.5 ? "Running" : "Finished",
+      datasetPreset: "Driving",
+      datasetWorld: "Tokyo",
       mlModel: null,
-      trainingAlgorithm: 'training-algorithm.txt',
+      trainingAlgorithm: "training-algorithm.txt",
       startedOn: Date.now(),
       endedOn: null
-    }
-    const createNewTaskOperation = graphqlOperation(createNewTaskMutation, createNewTaskMutationParameters);
-    const { data: { createTask: newTask } } = await API.graphql(createNewTaskOperation);
+    };
+    const createNewTaskOperation = graphqlOperation(
+      createNewTaskMutation,
+      createNewTaskMutationParameters
+    );
+    const {
+      data: { createTask: newTask }
+    } = await API.graphql(createNewTaskOperation);
     return newTask;
   }
 
@@ -93,26 +90,28 @@ class Upload extends Component {
     const newTask = await this.createNewTask();
     this.provideTaskInformation(newTask);
     this.goBackToTasksPage();
-  }
+  };
 
   render() {
     return (
       <div style={styles.root}>
-          <h1>Choose What Type of Neural Net</h1>
-          <Button
-            onClick={() => {
-              this.props.history.push("../choose-dataset");
-            }}
-          >
-            Back
+        <h1>Choose What Type of Neural Net</h1>
+        <Button
+          onClick={() => {
+            this.props.history.push("../choose-dataset");
+          }}
+        >
+          Back
+        </Button>
+        <Paper style={styles.paper}>
+          <Subheader>Upload Training Algorithm</Subheader>
+          <br />
+          <input type="file" ref={this.fileInput} />
+          <br />
+          <Button variant="contained" color="primary" onClick={this.startTask}>
+            Launch Task
           </Button>
-          <Paper style={styles.paper}>
-            <Subheader>Upload Training Algorithm</Subheader>
-            <br />
-            <input type='file' ref={this.fileInput} />
-            <br />
-            <Button variant="contained" color="primary" onClick={this.startTask}>Launch Task</Button>
-          </Paper>
+        </Paper>
       </div>
     );
   }

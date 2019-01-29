@@ -37,39 +37,28 @@ class ChooseDataset extends Component {
         </Button>
         <List component="nav">
           <Subheader>
-            Choose the dataset. We have a variety of different worlds. If you require specific parameters, contact us.
+            Choose the dataset. We have a variety of different worlds. If you
+            require specific parameters, contact us.
           </Subheader>
-          <ListItem
-            button
-            onClick={() => this.redirectToUpload("tokyo")}
-          >
+          <ListItem button onClick={() => this.redirectToUpload("tokyo")}>
             <ListItemIcon>
               <DirectionsCarIcon />
             </ListItemIcon>
             <ListItemText primary="Tokyo" />
           </ListItem>
-          <ListItem
-            button
-            onClick={() => this.redirectToUpload("nyc")}
-          >
+          <ListItem button onClick={() => this.redirectToUpload("nyc")}>
             <ListItemIcon>
               <LocalAirportIcon />
             </ListItemIcon>
             <ListItemText primary="NYC" />
           </ListItem>
-          <ListItem
-            button
-            onClick={() => this.redirectToUpload("countryside")}
-          >
+          <ListItem button onClick={() => this.redirectToUpload("countryside")}>
             <ListItemIcon>
               <LocalAirportIcon />
             </ListItemIcon>
             <ListItemText primary="Country Side" />
           </ListItem>
-          <ListItem
-            button
-            onClick={() => this.redirectToUpload("mexico")}
-          >
+          <ListItem button onClick={() => this.redirectToUpload("mexico")}>
             <ListItemIcon>
               <WarningIcon />
             </ListItemIcon>
