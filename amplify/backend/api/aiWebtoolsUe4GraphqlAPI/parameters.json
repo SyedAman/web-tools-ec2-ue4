@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "aiWebtoolsUe4GraphqlAPI",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognitof26ddec3",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "schemaGraphql": "s3://webtoolsec2ue4-20190128103432-deployment/amplify-appsync-files/schema.graphql.1548716470121",
+    "ResolverBucket": "webtoolsec2ue4-20190128103432-deployment",
+    "ResolverRootKey": "amplify-appsync-files",
+    "DeploymentTimestamp": "1548716470121"
+}

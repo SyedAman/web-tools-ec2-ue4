@@ -1,0 +1,21 @@
+type Task @model {
+  id: ID!
+  type: TaskType!
+  status: TaskStatus!
+  datasetWorld: String
+  datasetPreset: String
+  mlModel: String
+  trainingAlgorithm: String
+  startedOn: String
+  endedOn: String
+}
+
+enum TaskStatus {
+  Running
+  Finished
+}
+
+enum TaskType {
+  Train
+  Test
+}

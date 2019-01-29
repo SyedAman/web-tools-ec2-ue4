@@ -1,0 +1,74 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "webtoolsec2ue4-20190128103432-authRole",
+            "UnauthRoleArn": "arn:aws:iam::634126375986:role/webtoolsec2ue4-20190128103432-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::634126375986:role/webtoolsec2ue4-20190128103432-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "webtoolsec2ue4-20190128103432-deployment",
+            "UnauthRoleName": "webtoolsec2ue4-20190128103432-unauthRole",
+            "StackName": "webtoolsec2ue4-20190128103432",
+            "StackId": "arn:aws:cloudformation:us-east-1:634126375986:stack/webtoolsec2ue4-20190128103432/35c29980-2312-11e9-852e-0eb85d5eff94"
+        }
+    },
+    "hosting": {
+        "S3AndCloudFront": {
+            "service": "S3AndCloudFront",
+            "providerPlugin": "awscloudformation",
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/webtoolsec2ue4-20190128103432-deployment/amplify-cfn-templates/hosting/template.json",
+                "logicalId": "hostingS3AndCloudFront"
+            },
+            "lastPushTimeStamp": "2019-01-29T14:44:08.341Z",
+            "output": {
+                "S3BucketSecureURL": "https://ai-ue4-webtools.s3.amazonaws.com",
+                "WebsiteURL": "http://ai-ue4-webtools.s3-website-us-east-1.amazonaws.com",
+                "Region": "us-east-1",
+                "HostingBucketName": "ai-ue4-webtools"
+            },
+            "lastPushDirHash": "2PueoU3Z1taqSZ2zd6HvDXFQKiI="
+        }
+    },
+    "auth": {
+        "cognitof26ddec3": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/webtoolsec2ue4-20190128103432-deployment/amplify-cfn-templates/auth/cognitof26ddec3-cloudformation-template.yml",
+                "logicalId": "authcognitof26ddec3"
+            },
+            "lastPushTimeStamp": "2019-01-28T23:02:13.480Z",
+            "output": {
+                "AppClientSecret": "1pkqs7vmilf5t9fkepmta5sjsqa0dvf0s89onf7k5fu7kfi7c6bp",
+                "UserPoolId": "us-east-1_VzM3uiVbc",
+                "AppClientIDWeb": "2glhhfdubqanqt29cjk0ka2fnt",
+                "AppClientID": "3ohk7hvhpailc446it38ldqel7",
+                "IdentityPoolId": "us-east-1:2370c760-cbcc-4134-a9ab-70cf0bfbe1b7",
+                "IdentityPoolName": "cognitof26ddec3_identitypool_f26ddec3",
+                "UserPoolName": "cognitof26ddec3_userpool_f26ddec3"
+            },
+            "lastPushDirHash": "oZKIExNSq9YPuXgruJdG4QG51Ys="
+        }
+    },
+    "api": {
+        "aiWebtoolsUe4GraphqlAPI": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "securityType": "AMAZON_COGNITO_USER_POOLS",
+                "GraphQLAPIIdOutput": "mhj6jnw2nvfj7c4ex3bxewyxfm",
+                "GraphQLAPIEndpointOutput": "https://wa2l62j23na3njui6b72pv3tl4.appsync-api.us-east-1.amazonaws.com/graphql",
+                "GraphQLAPIKeyOutput": "da2-epoomtqgrjh43pq7fjtjlgulgq",
+                "AuthCognitoUserPoolIdOutput": "us-east-1_VzM3uiVbc",
+                "AuthCognitoUserPoolNativeClientId": "See UserPool: us-east-1_VzM3uiVbc",
+                "AuthCognitoUserPoolJSClientId": "See UserPool: us-east-1_VzM3uiVbc"
+            },
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/webtoolsec2ue4-20190128103432-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+                "logicalId": "apiaiWebtoolsUe4GraphqlAPI"
+            },
+            "lastPushTimeStamp": "2019-01-28T23:02:14.615Z",
+            "lastPushDirHash": "64HLQWxFqlYUY7JULwRq83oSbb4="
+        }
+    }
+}
