@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-import PublicIcon from "@material-ui/icons/Public";
 
 import FinishedTask from "./FinishedTask";
 import RunningTask from "./RunningTask";
-
-const vrExperience =
-  "https://4f3d3840ab234139b37bfba512769fc3.us-west-2.sumerian.aws/";
 
 const styles = {
   root: {
@@ -17,9 +12,6 @@ const styles = {
     alignItems: "center",
     flexWrap: "wrap",
     justifyContent: "space-around"
-  },
-  rightIcon: {
-    marginLeft: "10px"
   }
 };
 
@@ -72,12 +64,6 @@ class TaskDetails extends Component {
         ) : (
           <FinishedTask task={task} />
         )}
-        <a href={vrExperience} target="_blank">
-          <Button variant="contained" color="default">
-            View Virtual World
-            <PublicIcon style={styles.rightIcon} />
-          </Button>
-        </a>
       </div>
     );
   }

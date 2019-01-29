@@ -64,15 +64,21 @@ class Upload extends Component {
     }
   }
 
+  toCapitalCase(word) {
+    return word.charAt(0).toUpperCase() + word.substring(1);
+  }
+
   async createNewTask() {
+    const { params } = this.props.match;
+    const aiType = params.aiType.split('-')[0];
     const createNewTaskMutationParameters = {
       id: uuidv1(),
-      type: Math.random() > 0.5 ? "Train" : "Test",
+      type: this.toCapitalCase(aiType),
       status: Math.random() > 0.5 ? "Running" : "Finished",
-      datasetPreset: "Driving",
-      datasetWorld: "Tokyo",
+      datasetPreset: this.toCapitalCase(params.preset),
+      datasetWorld: this.toCapitalCase(params.world),
       mlModel: null,
-      trainingAlgorithm: "training-algorithm.txt",
+      trainingAlgorithm: 'training-algorithm.txt',
       startedOn: Date.now(),
       endedOn: null
     };

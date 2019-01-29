@@ -1,5 +1,16 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import PublicIcon from "@material-ui/icons/Public";
+
+const vrExperience =
+  "https://4f3d3840ab234139b37bfba512769fc3.us-west-2.sumerian.aws/";
+
+  const styles = {
+    rightIcon: {
+      marginLeft: "10px"
+    }
+  };
+
 
 const FinishedTask = ({ task }) =>
   task && (
@@ -23,6 +34,13 @@ const FinishedTask = ({ task }) =>
           hours droven.
         </li>
       </ul>
+
+      <a href={vrExperience} target="_blank">
+        <Button variant="contained" color="default">
+          View Virtual World
+          <PublicIcon style={styles.rightIcon} />
+        </Button>
+      </a>
     </div>
   );
 

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Card, CardHeader } from "material-ui/Card";
+import Button from "@material-ui/core/Button";
 import { GridList, GridTile } from "material-ui/GridList";
 import Subheader from "material-ui/Subheader";
+import CardActions from "@material-ui/core/CardActions";
 import CheckMark from "../assets/check_mark.png";
 import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
@@ -14,13 +16,12 @@ const styles = {
   root: {
     display: "flex",
     flexWrap: "wrap",
+    flexDirection: "column",
+    alignItems: "center",
     justifyContent: "space-around"
   },
   gridList: {
     overflowY: "auto"
-  },
-  content: {
-    cursor: "pointer"
   },
   button: {
     margin: 0,
@@ -32,6 +33,7 @@ const styles = {
     zIndex: 5
   }
 };
+
 
 class Tasks extends Component {
   state = {
@@ -79,25 +81,26 @@ class Tasks extends Component {
     }));
   };
 
+
+
   render() {
     return (
       <div style={styles.root}>
         <h1>All Tasks</h1>
-        <Subheader>
-          Click task for more info. Train and test AI in virtual simulated
-          worlds.
-        </Subheader>
-        <GridList cellHeight={80} style={styles.gridList}>
+
+        <GridList cellHeight={150} style={styles.gridList}>
+          <Subheader>
+            Click task for more info. Train and test AI in virtual simulated
+            worlds.
+          </Subheader>
           {this.props.tasks &&
             this.props.tasks.map(task => (
               <GridTile key={task.id}>
-                <Card
-                  onClick={() => this.redirectToTaskDetailsPage(task)}
-                  style={styles.content}
-                >
+                <Card>
                   <CardHeader
                     title={`${task.type} Task`}
                     subtitle={task.status}
+                    action={<button>yo</button>}
                     avatar={
                       task.status === "Running" ? (
                         <CircularProgress />
@@ -106,6 +109,20 @@ class Tasks extends Component {
                       )
                     }
                   />
+                  <CardActions>
+                    <Button
+                      onClick={() => this.redirectToTaskDetailsPage(task)}
+                      size="small"
+                    >
+                      Details
+                    </Button>
+                    <Button
+                      onClick={() => this.props.onDeleteTask(task.id)}
+                      size="small"
+                    >
+                      Delete
+                    </Button>
+                  </CardActions>
                 </Card>
               </GridTile>
             ))}
